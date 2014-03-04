@@ -47,6 +47,7 @@ class dhcpd (
   $range = undef,
   $router = undef,
   $dns = undef,
+  $domain = undef,
 )
 {
 

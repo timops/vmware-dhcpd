@@ -1,25 +1,26 @@
-# This works for ISC DHCP Server 4.1-ESV-R4 (ubuntu 12.04 LTS default)
+# Generated automatically for <%= scope.lookupvar('::hostname') %> by Puppet.
 
 ddns-updates on;
 ddns-update-style interim;
 ignore client-updates;
 update-static-leases on;
 
-option domain-name "<%= @server_domain %>";
+option domain-name "<%= @domain %>";
 
-subnet <%= @dhcp_network %> netmask <%= @dhcp_netmask %> {
+subnet <%= @netmask %> netmask <%= @netmask %> {
   default-lease-time -1;
   max-lease-time -1;
-  range <%= @dhcp_range %>;
-  option subnet-mask <%= @dhcp_netmask %>;
-  option domain-name-servers <%= @dhcp_dns %>;
-  option ntp-servers <%= @dhcp_ntp %>;
+  range <%= @range %>;
+  option subnet-mask <%= @netmask %>;
+  option domain-name-servers <%= @dns %>;
+  option ntp-servers <%= @ntp %>;
   # option broadcast-address 10.127.1.255;
-  option routers <%= @dhcp_router %>;
+  option routers <%= @router %>;
   if exists user-class and option user-class = "iPXE" {
     filename "bootstrap.ipxe";
   } else {
     filename "undionly.kpxe";
   }
-  next-server 10.127.1.10;
+  # TFTP is on same host as NTP server.
+  next-server <%= @ntp %>;
 }
