@@ -55,7 +55,7 @@ class dhcpd (
 
   service { 'isc-dhcp-server':
     ensure  => 'running',
-    enabled => 'true',
+    enable => 'true',
   }
 
   file { '/etc/dhcp/dhcpd.conf':
