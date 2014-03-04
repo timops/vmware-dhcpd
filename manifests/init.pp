@@ -66,6 +66,6 @@ class dhcpd (
     notify  => Service['isc-dhcp-server']
   }
 
-  Package['dhcp-server'] -> Service['isc-dhcp-server'] -> File['/etc/dhcp/dhcpd.conf']
+  Package['dhcp-server'] -> File['/etc/dhcp/dhcpd.conf'] -> Service['isc-dhcp-server']
 
 }
