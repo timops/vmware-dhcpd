@@ -62,7 +62,7 @@ class dhcpd (
     owner   => 'root',
     group   => 'root',
     mode    => 0644,
-    content => template('dhcpd/dhcp.conf.erb'),
+    content => template('dhcpd/dhcpd.conf.erb'),
     notify  => Service['isc-dhcp-server']
   }
 
