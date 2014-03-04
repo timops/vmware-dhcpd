@@ -51,7 +51,7 @@ class dhcpd (
 )
 {
 
-  package { 'dhcp-server': ensure => installed }
+  package { 'dhcp3-server': ensure => installed }
 
   service { 'isc-dhcp-server':
     ensure  => 'running',
@@ -66,6 +66,6 @@ class dhcpd (
     notify  => Service['isc-dhcp-server']
   }
 
-  Package['dhcp-server'] -> File['/etc/dhcp/dhcpd.conf'] -> Service['isc-dhcp-server']
+  Package['dhcp3-server'] -> File['/etc/dhcp/dhcpd.conf'] -> Service['isc-dhcp-server']
 
 }
