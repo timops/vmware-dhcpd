@@ -7,7 +7,7 @@ update-static-leases on;
 
 option domain-name "<%= @domain %>";
 
-subnet <%= @netmask %> netmask <%= @netmask %> {
+subnet <%= @network %> netmask <%= @netmask %> {
   default-lease-time -1;
   max-lease-time -1;
   range <%= @range %>;
